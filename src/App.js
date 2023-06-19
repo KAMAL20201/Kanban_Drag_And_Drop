@@ -21,7 +21,7 @@ const Container = styled.div`
   display: flex;
   flex-direction: row;
   width: 100%;
-  height: 932px;
+  height: auto;
   background: #ffffff;
   box-shadow: 0px 44px 84px 6px #d8d9db;
   border-radius: 30px;

@@ -2,65 +2,70 @@ import React from "react";
 import styled from "styled-components";
 import commentimage from "./comment.png";
 import filesImage from "./folder-2.png";
-import { Draggable } from 'react-beautiful-dnd';
-function Card({card,index}) {
- 
-
+import { Draggable } from "react-beautiful-dnd";
+function Card({ card, index }) {
   const singleImage = card.coverimage?.length === 1;
   return (
     <Draggable draggableId={card.id} index={index}>
-    {(provided) => (
-      <div
-        ref={provided.innerRef}
-        {...provided.draggableProps}
-        {...provided.dragHandleProps}
-      >
-    <Container>
-      <Priority priority={card.priority}>
-        <Text priority={card.priority}>{card.priority}</Text>
-        <Dots>...</Dots>
-      </Priority>
-      <Title>{card.title}</Title>
-      {card.description !== "" && <Description>{card.description}</Description>}
-      <CoverImages>
-        {card.coverimage?.length > 0 &&
-          card.coverimage.map((image, index) => {
-            return (
-              <CoverImage
-                key={index}
-                singleImage={singleImage}
-                src={image}
-                alt="myimage"
-              />
-            );
-          })}
-      </CoverImages>
-      <Socials>
-        <Images>
-          {card.profileimages.map((image, index) => {
-            return (
-              <Image
-                width="24px"
-                height="24px"
-                src={image}
-                alt="myimage"
-                style={{ zIndex: card.profileimages.length - index }}
-              />
-            );
-          })}
-        </Images>
-        <Comments>
-          <img src={commentimage} alt="comment" /> {card.comments} <span>comments</span>
-        </Comments>
+      {(provided) => (
+        <div
+          ref={provided.innerRef}
+          {...provided.draggableProps}
+          {...provided.dragHandleProps}
+        >
+          <Container>
+            <Priority priority={card.priority}>
+              <Text priority={card.priority}>
+                {card.priority === "Low" && "Low"}
+                {card.priority === "High" && "High"}
+                {card.priority === "Completed" && "Completed"}
+              </Text>
+              <Dots>...</Dots>
+            </Priority>
+            <Title>{card.title}</Title>
+            {card.description !== "" && (
+              <Description>{card.description}</Description>
+            )}
+            <CoverImages>
+              {card.coverimage?.length > 0 &&
+                card.coverimage.map((image, index) => {
+                  return (
+                    <CoverImage
+                      key={index}
+                      singleImage={singleImage}
+                      src={image}
+                      alt="myimage"
+                    />
+                  );
+                })}
+            </CoverImages>
+            <Socials>
+              <Images>
+                {card.profileimages.map((image, index) => {
+                  return (
+                    <Image
+                      width="24px"
+                      height="24px"
+                      src={image}
+                      alt="myimage"
+                      style={{ zIndex: card.profileimages.length - index }}
+                    />
+                  );
+                })}
+              </Images>
+              <Comments>
+                <img src={commentimage} alt="comment" /> {card.comments}{" "}
+                <span>comments</span>
+              </Comments>
 
-        <Files>
-          {" "}
-          <img src={filesImage} alt="file" />
-          {card.files} <span>files</span>
-        </Files>
-      </Socials>
-    </Container>
-    </div>
+              <Files>
+                {" "}
+                <img src={filesImage} alt="file" />
+                {card.files} <span>files</span>
+              </Files>
+            </Socials>
+          </Container>
+        </div>
       )}
     </Draggable>
   );
@@ -78,7 +83,7 @@ const Dots = styled.div`
     top: -5px;
   }
   @media (min-width: 320px) and (max-width: 480px) {
-    display:none;
+    display: none;
   }
 `;
 
@@ -93,13 +98,12 @@ const CoverImage = styled.img`
   @media (min-width: 320px) and (max-width: 480px) {
     width: ${({ singleImage }) => (singleImage ? "100%" : "33%")};
     height: ${({ singleImage }) => (singleImage ? "50px" : "30px")};
-    margin:10px 0px 0px 0px;
+    margin: 10px 0px 0px 0px;
   }
 `;
 const CoverImages = styled.div`
   display: flex;
   flex-wrap: wrap;
-
 `;
 const Container = styled.div`
   /* position: absolute; */
@@ -115,18 +119,16 @@ const Container = styled.div`
   margin: 10px;
   @media (max-width: 768px) {
     align-items: flex-start;
-    margin:10px 5px;
+    margin: 10px 5px;
     width: 145px;
     height: auto;
   }
   @media (min-width: 320px) and (max-width: 480px) {
     align-items: flex-start;
-    margin:10px 5px;
-    width: 60px;
+    margin: 10px 25px;
+    width: 90%;
     height: auto;
-  
   }
-
 `;
 const Text = styled.div`
   height: 15px;
@@ -138,7 +140,7 @@ const Text = styled.div`
   font-size: 12px;
   line-height: 15px;
   @media (min-width: 320px) and (max-width: 480px) {
-   padding:5px 3px 5px 4px;
+    padding: 5px 3px 5px 4px;
   }
   color: ${(props) => {
     if (props.priority === "Low") return "#D58D49";
@@ -156,13 +158,12 @@ const Socials = styled.div`
   align-items: center;
   margin-top: 10px;
   @media (max-width: 768px) {
-     padding:20px 0px 5px 0px;
+    padding: 20px 0px 5px 0px;
   }
   @media (min-width: 320px) and (max-width: 480px) {
-    display:flex;
+    display: flex;
     flex-direction: column;
   }
-
 `;
 const Images = styled.div`
   display: flex;
@@ -171,9 +172,8 @@ const Images = styled.div`
   justify-content: space-between;
   position: relative;
   @media (min-width: 320px) and (max-width: 480px) {
-    position:relative;
-    top:0px;
-  
+    position: relative;
+    top: 0px;
   }
 `;
 const Image = styled.img`
@@ -197,24 +197,21 @@ const Comments = styled.div`
   line-height: 15px;
   /* identical to box height */
   @media (min-width: 320px) and (max-width: 480px) {
-    display:none;
-  
+    display: none;
   }
   color: #787486;
   img {
     position: relative;
     left: 0px;
     top: 4px;
-   
   }
-  span{
+  span {
     @media (max-width: 768px) {
-      display:none;
+      display: none;
     }
     @media (min-width: 320px) and (max-width: 480px) {
-    display:none;
-  
-  }
+      display: none;
+    }
   }
 `;
 
@@ -227,28 +224,25 @@ const Files = styled.div`
   /* identical to box height */
   color: #787486;
   @media (min-width: 320px) and (max-width: 480px) {
-    display:none;
-  
+    display: none;
   }
   img {
     position: relative;
     left: -2px;
     top: 4px;
     @media (min-width: 320px) and (max-width: 480px) {
-    position:relative;
-    top:20px;
-    left:10px;
-  
+      position: relative;
+      top: 20px;
+      left: 10px;
     }
   }
-  span{
+  span {
     @media (max-width: 768px) {
-      display:none;
+      display: none;
     }
     @media (min-width: 320px) and (max-width: 480px) {
-       display:none;
-  
-  }
+      display: none;
+    }
   }
 `;
 
@@ -266,7 +260,6 @@ const Priority = styled.div`
   }};
   border-radius: 4px;
   margin-bottom: 10px;
- 
 `;
 
 const Title = styled.div`
@@ -284,9 +277,8 @@ const Title = styled.div`
     font-size: 12px;
   }
   @media (min-width: 320px) and (max-width: 480px) {
-    font-size:8px;
-    text-wrap:wrap;
-  
+    font-size: 8px;
+    text-wrap: wrap;
   }
 `;
 const Description = styled.div`
@@ -301,7 +293,7 @@ const Description = styled.div`
   color: #787486;
   margin-bottom: 10px;
   @media (min-width: 320px) and (max-width: 480px) {
-   font-size:8px;
-   line-height: 10px;
+    font-size: 8px;
+    line-height: 10px;
   }
 `;

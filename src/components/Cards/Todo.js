@@ -14,7 +14,7 @@ function Todo({ cards }) {
                 <Dot></Dot>
                 <Text>To Do</Text>
                 <Number>
-                  <NumText>4</NumText>
+                  <NumText>{cards.length}</NumText>
                 </Number>
               </SmallHeading>
               <Button>
@@ -59,16 +59,13 @@ const SmallHeading = styled.div`
 const Line = styled.div`
   width: 254px;
   height: 0px;
-  margin: 0px 15px;
+  margin: 15px 15px;
   background: #800080;
   border: 3px solid #5030e5;
   @media (max-width: 768px) {
     width: 154px;
   }
-  @media (min-width: 320px) and (max-width: 480px) {
-    width: 74px;
   
-  }
 `;
 
 const Heading = styled.div`
@@ -84,10 +81,7 @@ const Dot = styled.div`
   background: #5030e5;
   margin: 0px 4px;
   border-radius: 50%;
-  @media (min-width: 320px) and (max-width: 480px) {
-   display:none;
-  }
-  
+
 `;
 
 const Text = styled.div`
@@ -100,9 +94,7 @@ const Text = styled.div`
   font-size: 16px;
   line-height: 19px;
   color: #0d062d;
-  @media (min-width: 320px) and (max-width: 480px) {
-    font-size:10px;
-  }
+  
 `;
 const Number = styled.div`
   box-sizing: border-box;
@@ -116,9 +108,6 @@ const Button = styled.div`
   position: relative;
   width: 24px;
   height: 24px;
-  @media (min-width: 320px) and (max-width: 480px) {
-   display:none;
-  }
   
 `;
 
@@ -133,10 +122,7 @@ const Container = styled.div`
   flex-direction: column;
   @media (max-width: 768px) {
     width: 190px;
-    margin: 20px 20px 0px 30px;
+    margin: 20px 20px 0px -210px;
   }
-  @media (min-width: 320px) and (max-width: 480px) {
-    width: 100px;
-    margin: 20px 5px 0px 10px;
-  }
+ 
 `;
