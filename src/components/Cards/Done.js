@@ -14,7 +14,7 @@ function Done({ cards }) {
                 <Dot></Dot>
                 <Text>Done</Text>
                 <Number>
-                  <NumText>{cards.length}</NumText>
+                  <NumText>2</NumText>
                 </Number>
               </SmallHeading>
             </Heading>
@@ -53,13 +53,16 @@ const Line = styled.div`
 
   width: 254px;
   height: 0px;
-  margin: 15px 15px;
+  margin: 0px 15px;
   background: #800080;
   border: 3px solid #8BC48A;
   @media (max-width: 768px) {
     width:154px;
   }
- 
+  @media (min-width: 320px) and (max-width: 480px) {
+    width: 74px;
+  
+  }
 `;
 
 const Heading = styled.div`
@@ -73,10 +76,12 @@ const Heading = styled.div`
 const Dot = styled.div`
   width: 8px;
   height: 8px;
-  background: #5030e5;
+  background: #8BC48A;;
   margin: 0px 4px;
   border-radius: 50%;
-  
+  @media (min-width: 320px) and (max-width: 480px) {
+   display:none;
+  }
 `;
 
 const Text = styled.div`
@@ -89,7 +94,9 @@ const Text = styled.div`
   font-size: 16px;
   line-height: 19px;
   color: #0d062d;
- 
+  @media (min-width: 320px) and (max-width: 480px) {
+    font-size:10px;
+  }
 `;
 const Number = styled.div`
   box-sizing: border-box;
@@ -114,5 +121,8 @@ const Container = styled.div`
     width: 190px;
     margin: 20px 40px 0px 0px;
   }
-  
+  @media (min-width: 320px) and (max-width: 480px) {
+    width: 100px;
+    margin: 20px 10px 0px 0px;
+  }
 `;

@@ -122,29 +122,24 @@ function CardContent() {
       setInProgressCards(
         inProgressCards.filter((card) => card.id !== draggableId)
       );
-    } else if (source.droppableId === "done") {
-
+    } else if (source.droppableId === "done" && destination.droppableId !== "toDo") {
       setDoneCards(doneCards.filter((card) => card.id !== draggableId));
     }
 
     if (card && destination.droppableId === "toDo") {
-      if(source.droppableId === "done") {
-        card.priority = "High";
+      if (source.droppableId === "done") {
+        card.priority="Low";
       }
-        setToDoCards([card, ...toDoCards]);
-      
+      setToDoCards([card, ...toDoCards]);
      
     } else if (card && destination.droppableId === "inProgress") {
-      if(source.droppableId === "done") {
-        card.priority = "Low";
+      if (source.droppableId === "done") {
+        card.priority="High";
       }
-     
       setInProgressCards([card,...inProgressCards]);
-      
     } else if (card && destination.droppableId === "done") {
-      card.priority = "Completed"; // Update the priority to "Completed"
-      setDoneCards([card, ...doneCards]);
-     
+      card.priority = "Completed";
+      setDoneCards([card,...doneCards]);
     }
   };
 
@@ -190,7 +185,6 @@ const Container = styled.div`
     width:100vw;
     justify-content:space-between;
   }
-  
   
  
 `;

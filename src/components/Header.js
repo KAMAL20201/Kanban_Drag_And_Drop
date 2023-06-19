@@ -41,8 +41,6 @@ const Container = styled.div`
   border-bottom: 1px solid #dbdbdb;
   display: flex;
   flex-direction: row;
-  width: 100%;
- 
   
 `;
 const Button = styled.div`
@@ -57,13 +55,18 @@ const Button = styled.div`
     width: 0px;
     display: none;
   }
-  
+  @media (min-width: 320px) and (max-width: 480px) {
+    /* Styles for screens with width between 320px and 480px */
+    /* Targeting iPhones and similar devices */
+    width: 0px;
+    display: none;
+
+  }
 `;
 const Name = styled.div`
 position: relative;
 top:25px;
 left:58%; 
-
   span:first-child{
     font-family: 'Inter';
     font-style: normal;
@@ -72,7 +75,6 @@ left:58%;
     line-height: 19px;
     text-align: right;
     color: #0D062D;
-   
   }
   &:nth-child(3){
     padding:1px 0px;
@@ -83,9 +85,10 @@ left:58%;
     line-height: 17px;
     text-align: right;
     color: #787486;
-    
+
   }
   @media (max-width: 768px) {
+    /* Collapse the buttons for mobile devices */
     top:25px;
     left:50%; 
   }
@@ -97,7 +100,6 @@ top:25px;
 img{
 border-radius:50%;
 }
-
 `;
 const Arrow = styled.div`
 position:absolute;
@@ -119,7 +121,11 @@ const Input = styled.div`
     border-radius: 6px;
     border: none;
     padding-left: 40px;
-   
+    @media (min-width: 320px) and (max-width: 480px) {
+    /* Styles for screens with width between 320px and 480px */
+    /* Targeting iPhones and similar devices */
+    width: 217px;
+  }
   }
   input::placeholder{
     font-family: 'Inter';
@@ -137,8 +143,7 @@ const Input = styled.div`
     top: 101.1%;
     bottom: 12.5%;
     z-index: 9999;
-   
+
   }
   
 `;
-

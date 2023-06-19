@@ -123,7 +123,10 @@ const Definition = styled.div`
   justify-content: space-between;
   align-items: center;
   margin: 20px 0px 50px 40px;
-
+  @media (min-width: 320px) and (max-width: 480px) {
+    display: flex;
+    flex-direction: column;
+  }
 `;
 
 const Filter = styled.div`
@@ -141,7 +144,12 @@ const Invite = styled.div`
     top: 0px;
     right: 20px;
   }
- 
+  @media (min-width: 320px) and (max-width: 480px) {
+    position: relative;
+    top: 40px;
+    right: 130px;
+    margin-bottom: 20px;
+  }
   span {
     position: relative;
     font-family: "Inter";
@@ -214,12 +222,11 @@ const Heading = styled.div`
     text-transform: capitalize;
     color: #0d062d;
     @media (max-width: 768px) {
-    
+      /* Collapse the buttons for mobile devices */
       width: 253px;
       height: 56px;
       font-size: 35px;
     }
-   
 
   }
   img:nth-child(2) {
@@ -243,5 +250,11 @@ const Heading = styled.div`
       top: 13px;
     }
   }
-    
+    @media (min-width: 320px) and (max-width: 480px) {
+     
+      position:absolute;
+      top:85px;
+      left:40px;
+      margin-bottom: 20px; 
+     }  
 `;

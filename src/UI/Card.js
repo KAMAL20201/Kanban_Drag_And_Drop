@@ -16,6 +16,7 @@ function Card({ card, index }) {
           <Container>
             <Priority priority={card.priority}>
               <Text priority={card.priority}>
+                {" "}
                 {card.priority === "Low" && "Low"}
                 {card.priority === "High" && "High"}
                 {card.priority === "Completed" && "Completed"}
@@ -125,8 +126,8 @@ const Container = styled.div`
   }
   @media (min-width: 320px) and (max-width: 480px) {
     align-items: flex-start;
-    margin: 10px 25px;
-    width: 90%;
+    margin: 10px 5px;
+    width: 60px;
     height: auto;
   }
 `;
